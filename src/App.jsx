@@ -1,13 +1,26 @@
-import React from 'react'
+import React from "react";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import Login from "./Login";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 
-export default function App() {
-  return (
-    <div className='bg-rose-600 flex items-center justify-center h-screen'>       
-  
+const persistor = persistStore(store)
 
 
 
+const App = () =>{
 
-    </div>
+ 
+
+  return(
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+          <Login/>
+      </PersistGate>
+    </Provider>
   )
+
 }
+  
+export default App
